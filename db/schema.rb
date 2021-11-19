@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_032237) do
+ActiveRecord::Schema.define(version: 2021_11_19_042542) do
 
   create_table "book_genres", force: :cascade do |t|
     t.integer "genre_id"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_11_19_032237) do
 
   create_table "book_orders", force: :cascade do |t|
     t.integer "order_id"
-    t.integer "product_id"
+    t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,23 +29,23 @@ ActiveRecord::Schema.define(version: 2021_11_19_032237) do
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.string "author"
-    t.float "user_rating"
-    t.text "reviews"
-    t.float "price"
+    t.integer "user_rating"
+    t.string "review"
+    t.integer "price"
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string "genre_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "book_id"
-    t.integer "user_id"
+    t.integer "customer_id"
     t.float "price"
     t.float "tax"
     t.float "subtotal"
