@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book_id: 1
+  customer_id: 1
+  price: 1.5
+  tax: 1.5
+  subtotal: 1.5
+  total: 1.5
+
+two:
+  book_id: 1
+  customer_id: 1
+  price: 1.5
+  tax: 1.5
+  subtotal: 1.5
+  total: 1.5
