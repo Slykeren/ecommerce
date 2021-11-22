@@ -4,6 +4,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :author
       t.integer :user_rating
+      t.integer :genre_id
       t.string :review
       t.integer :price
       t.integer :year

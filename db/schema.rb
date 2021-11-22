@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_11_19_051117) do
     t.string "name"
     t.string "author"
     t.integer "user_rating"
+    t.integer "genre_id"
     t.string "review"
     t.integer "price"
     t.integer "year"
