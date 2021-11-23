@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_051117) do
     t.string "review"
     t.integer "price"
     t.integer "year"
+    t.text "description"
+    t.string "image_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

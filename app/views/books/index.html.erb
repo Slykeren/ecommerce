@@ -1,2 +1,11 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<% @books.each do |book| %>
+<div class="card" style="width: 18rem;">
+  <%# <img src="..." class="card-img-top" alt="..."> %>
+  <div class="card-body">
+  
+    <h5 class="card-title"><%= book.name %></h5>
+    <p class="card-text"><%= book.author %></p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+<% end %>

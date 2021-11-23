@@ -8,6 +8,8 @@ class CreateBooks < ActiveRecord::Migration[6.1]
       t.string :review
       t.integer :price
       t.integer :year
+      t.text :description
+      t.string :image_url
 
       t.timestamps
     end
