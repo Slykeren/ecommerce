@@ -2,14 +2,8 @@
 
 one:
   email: MyString
-  password: MyString
-  name: MyString
-  address: MyString
-  country: MyString
+  password_digest: MyString
 
 two:
   email: MyString
-  password: MyString
-  name: MyString
-  address: MyString
-  country: MyString
+  password_digest: MyString
