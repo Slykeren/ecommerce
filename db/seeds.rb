@@ -25,9 +25,11 @@ data["items"].each do |row|
     )
     
     b = Genre.create(
-        name: row["volumeInfo"]["categories"][0]
+        genre_name: row["volumeInfo"]["categories"][0]
     )
+    
 
 end
 puts "Created books"
+puts "created gneres"
 
