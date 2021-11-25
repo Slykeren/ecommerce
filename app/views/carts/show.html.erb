@@ -1,0 +1,18 @@
+
+
+<% @order_items.each do |item| %>
+
+<h3> <%=item.book.name %> </h3>
+<img src="<%=item.book.image_url %>">
+<h5> $<%= item.book.price %> </h5>
+
+<%= form_for item do |f| %>
+    <%= f.hidden_field :book_id, :value => item.book.id %>
+    <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1 %>
+    <%= f.submit "Update Cart" %>
+    <%end%>
+
+<h2> Subtotal: $<%= item.subtotal %> </h2>
+
+
+<% end %>

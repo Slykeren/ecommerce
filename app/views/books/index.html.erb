@@ -7,7 +7,15 @@
     <img src="<%= book.image_url %>"/>
     <p class="card-text"><%= book.author %></p>
     <h6>$<%= book.price %></h6>
-    <a href="#" class="btn btn-primary">Add to Cart</a>
+    
+    <%= form_for @order_item do |f| %>
+    <%= f.hidden_field :book_id, :value => book.id %>
+    <%= f.number_field :quantity, :value => 1, :min => 1 %>
+    <%= f.submit "Add to Cart" %>
+    <%end%>
   </div>
 </div>
+
 <% end %>
+
+<%= link_to "#{current_order.order_items.size} items with a value of $", cart_path %>

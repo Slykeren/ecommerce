@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_011833) do
+ActiveRecord::Schema.define(version: 2021_11_25_042451) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -66,8 +66,33 @@ ActiveRecord::Schema.define(version: 2021_11_24_011833) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "instrument_id", null: false
+    t.integer "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["instrument_id"], name: "index_line_items_on_instrument_id"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "book_id"
+    t.integer "order_id"
+    t.decimal "total"
+    t.decimal "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,4 +128,6 @@ ActiveRecord::Schema.define(version: 2021_11_24_011833) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "instruments"
 end

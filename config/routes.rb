@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'cart/show'
   resources :users, only: [:new, :create]
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :books, only: [:index, :show]
   resources :genres
+  resources :order_items
+  resource :cart, only: [:show]
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

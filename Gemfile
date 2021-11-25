@@ -25,6 +25,7 @@ gem 'activeadmin'
 gem 'devise'
 gem "breadcrumbs_on_rails"
 gem 'faker'
+gem 'jquery-rails', '~> 4.4'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
