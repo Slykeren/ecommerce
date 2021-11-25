@@ -20,20 +20,20 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home
+          <a class="nav-link active" href="/books">Books
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="Genres">Genres</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="/authors">Authors</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="/about">About</a>
         </li>
-        <% if(session == nil) %>
+        <% if(session[:user_id] == nil) %>
         <li class="nav-item">
           <%= button_to "Login", '/login', class: "btn btn-primary", method: :get%>
         </li>
@@ -42,11 +42,15 @@
         </li>
         <% end %>
 
-        <% if(session != nil) %>
+        <% if(session[:user_id] != nil) %>
         <li class="nav-item">
-          <%= button_to "Login", '/login', class: "btn btn-primary", method: :get%>
+          <%= button_to "Logout", '/logout', class: "btn btn-primary", method: :delete %>
         </li>
         <% end %>
+
+        <li class="nav-item">
+          <%= button_to "Cart", '/cart', class: "btn btn-primary", method: :get %>
+        </li>
 
 
       </ul>
