@@ -66,25 +66,10 @@ ActiveRecord::Schema.define(version: 2021_11_25_042451) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "line_items", force: :cascade do |t|
-    t.integer "instrument_id", null: false
-    t.integer "cart_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "quantity", default: 1
-    t.index ["cart_id"], name: "index_line_items_on_cart_id"
-    t.index ["instrument_id"], name: "index_line_items_on_instrument_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -124,10 +109,14 @@ ActiveRecord::Schema.define(version: 2021_11_25_042451) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "province"
+    t.string "postal_code"
+    t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "line_items", "carts"
-  add_foreign_key "line_items", "instruments"
 end

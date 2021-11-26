@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
         !current_user.nil?
     end
     def authorized
-       redirect_to '/welcome' unless logged_in?
+       
     end
     end
