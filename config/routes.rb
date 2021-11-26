@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :books, only: [:index, :show]
   resources :genres
+  resources :orders
   resources :order_items
   resource :cart, only: [:show]
 

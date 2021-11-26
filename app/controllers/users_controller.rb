@@ -4,7 +4,7 @@ class UsersController < ApplicationController
      @user = User.new
   end
   def create
-     @user = User.create(params.require(:user).permit(:email, :password))
+     @user = User.create(params.require(:user).permit(:email, :password, :province, :name, :city, :postal_code, :address, :country))
      session[:user_id] = @user.id
      redirect_to '/welcome'
   end
