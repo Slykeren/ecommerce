@@ -10,6 +10,7 @@ class BooksController < ApplicationController
   end
 
   def show
-      
+    @book = Book.find(params[:id])
+    add_breadcrumb @book.name, book_path(@book)
   end
 end
