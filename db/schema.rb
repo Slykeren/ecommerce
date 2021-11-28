@@ -55,9 +55,9 @@ ActiveRecord::Schema.define(version: 2021_11_25_042451) do
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.string "author"
-    t.decimal "user_rating"
+    t.integer "user_rating"
     t.string "review"
-    t.decimal "price"
+    t.integer "price"
     t.integer "year"
     t.text "description"
     t.string "image_url"
@@ -82,12 +82,10 @@ ActiveRecord::Schema.define(version: 2021_11_25_042451) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "book_id"
     t.integer "customer_id"
-    t.float "price"
-    t.float "tax"
-    t.float "subtotal"
-    t.float "total"
+    t.decimal "tax"
+    t.decimal "subtotal"
+    t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

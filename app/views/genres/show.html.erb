@@ -1,11 +1,16 @@
 <h1>Genres#show</h1>
 <p>Find me in app/views/genres/show.html.erb</p>
 
-<%= @genre.books.each do |book| %>
+<!-- create a loop to show all the books associated with this genre -->
+<h2>Books</h2>
+<ul>
+  <% @genre.books.each do |book| %>
+    <li><%= book.name %>asdasdasd</li>
+  <% end %>
+</ul>
 
-<%= book.name %>
+<!-- link to create a new book -->
 
-<%end%>
 
 
 

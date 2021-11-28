@@ -25,5 +25,5 @@
 
 <h1>Subtotal: $<%= subtotal %> </h1>
 <!-- need to figure out a way to send the whole order item object to order show, order item  -->
-<% session[:checkout_items] = @order_items %>
+<% session[:checkout] = subtotal %>
 <%= button_to "Checkout", orders_path, method: :post  %>

@@ -5,6 +5,7 @@ class GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
+    #find the books associated with the genre
     
   end
 
