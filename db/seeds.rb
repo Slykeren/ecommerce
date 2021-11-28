@@ -4,12 +4,14 @@ require 'pp'
 require 'csv'
 require 'uri'
 
-
+AdminUser.destroy_all
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 Book.destroy_all
 Genre.destroy_all
 BookGenre.destroy_all
+Tax.destroy_all
+
 
 
 uri_variable = URI("https://www.googleapis.com/books/v1/volumes?q={all}")
@@ -37,11 +39,20 @@ data["items"].each do |row|
         book_id: a.id,
         genre_id: b.id
     )
-    
-    
-    
-
 end
 puts "Created books"
-puts "created gneres"
+puts "created genres"
 
+province_list_url = "https://www.statcan.gc.ca/en/reference/province"
+province_list_html = open(province_list_url).read
+province_list_doc = Nokogiri::HTML(province_list_html)
+province_selector = province_list_doc.css('.field-item').css('ul').css('li')
+
+province_selector.each do |province|
+    Tax.create(
+        province: province.text
+    )
+    puts province.text
+end
+
+# div.field-item > ul   #node-115 > div > div > div

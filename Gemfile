@@ -27,6 +27,7 @@ gem "breadcrumbs_on_rails"
 gem 'faker'
 gem 'jquery-rails', '~> 4.4'
 gem 'stripe'
+gem 'nokogiri', '~> 1.12', '>= 1.12.5'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
