@@ -1,4 +1,5 @@
 <h1>Welcome</h1>
+<%= debug session[:user_id] %>
 <% if logged_in? %>
     <h1>You are Logged In, <%= current_user.email %></h1>
 <%end%>

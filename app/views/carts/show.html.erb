@@ -11,10 +11,10 @@
     <h6> Quantity: <%= session[:cart][index]['quantity'] %> </h6>
     
     <%= button_to 'Remove from Cart', remove_from_cart_path(book), method: :delete, class: 'btn btn-primary' %>
+    <br>
+    <h5> <%= link_to '<i class="bi bi-arrow-down-circle"></i>'.html_safe, add_quantity_path(book.id), method: :post, class: 'btn btn-primary btn-sm' %> <%= link_to '<i class="bi bi-arrow-up-circle"></i>'.html_safe, remove_quantity_path(book.id), method: :post, class: 'btn btn-primary btn-sm' %> </h5>
     
-    <h5> <%= link_to '<i class="bi bi-arrow-down-circle"></i>'.html_safe, add_quantity_path(book.id), method: :post, class: 'btn btn-success' %> </h5>
-    
-    </div>
+     </div>
     </div>
 
 <% end %>

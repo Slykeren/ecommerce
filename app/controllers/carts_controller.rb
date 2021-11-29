@@ -17,4 +17,14 @@ class CartsController < ApplicationController
       end
       redirect_back(fallback_location: root_path)
     end
+
+    def remove_quantity
+      session[:cart].each do |item|
+        if item['id'] == params[:id].to_i
+          item['quantity'] -= 1
+        end
+      end
+      redirect_back(fallback_location: root_path)
+    end
+    
 end
