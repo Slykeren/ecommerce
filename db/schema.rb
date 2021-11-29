@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_042451) do
   end
 
   create_table "taxes", force: :cascade do |t|
-    t.integer "amount"
+    t.float "amount"
     t.string "province"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

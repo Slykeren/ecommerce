@@ -43,16 +43,22 @@ end
 puts "Created books"
 puts "created genres"
 
-province_list_url = "https://www.statcan.gc.ca/en/reference/province"
+province_list_url = "https://www.retailcouncil.org/resources/quick-facts/sales-tax-rates-by-province/"
 province_list_html = open(province_list_url).read
 province_list_doc = Nokogiri::HTML(province_list_html)
-province_selector = province_list_doc.css('.field-item').css('ul').css('li')
+province_selector = province_list_doc.css('.table').css('tbody').css('tr')
+
 
 province_selector.each do |province|
+
+    province_text = province.css('td')[0].text
+    tax_text = province.css('td')[5].text.to_f / 100
+    
     Tax.create(
-        province: province.text
+        province: province_text,
+        amount: tax_text
     )
-    puts province.text
+    puts province_text
 end
 
 # div.field-item > ul   #node-115 > div > div > div
