@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'products/remove_from_cart/:id', to: 'books#remove_from_cart', as: 'remove_from_cart'
   post 'carts/add_quantity/:id', to: 'carts#add_quantity', as: 'add_quantity'
   post 'carts/remove_quantity/:id', to: 'carts#remove_quantity', as: 'remove_quantity'
+  get 'carts/invoice', to: 'carts#invoice', as: 'invoice'
 
 
 
