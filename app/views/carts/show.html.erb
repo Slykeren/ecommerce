@@ -1,29 +1,15 @@
 
-<% subtotal = 0; %>
-<% @order_items.each do |item| %>
+<% @cart.each do |book| %>
+<div class="card" style="width: 18rem;">
+  <%# <img src="..." class="card-img-top" alt="..."> %>
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to book.name, book %></h5>
+    <img src="<%= book.image_url %>"/>
 
-<h3> <%=item.book.name %> </h3>
-<img src="<%=item.book.image_url %>">
-<h5> $<%= item.book.price %> </h5>
-
-<%= form_for item do |f| %>
-    <%= f.hidden_field :book_id, :value => item.book.id %>
-    <%= f.number_field :quantity, :value => item.quantity.to_i, :min => 1 %>
-    <%= f.submit "Update Cart" %>
-    
-    <%end%>
-<%= button_to "Remove from cart", order_item_path(item) , method: :delete %>
-
-
-
-
-<% subtotal +=  item.total%>
-
-
+    <p class="card-text"><%= book.author %></p>
+    <h6>$<%= book.price %></h6>
+    <%= button_to 'Remove from Cart', remove_from_cart_path(book), method: :delete, class: 'btn btn-primary' %>
+    </div>
+    </div>
 
 <% end %>
-
-<h1>Subtotal: $<%= subtotal %> </h1>
-<!-- need to figure out a way to send the whole order item object to order show, order item  -->
-<% session[:checkout] = subtotal %>
-<%= button_to "Checkout", orders_path, method: :post  %>

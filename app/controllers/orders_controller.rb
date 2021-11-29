@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
     @order.total = 0.0
     @order.save
     redirect_to @order
-    byebug
   end
 
 end

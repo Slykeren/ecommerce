@@ -12,6 +12,12 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'books#index'
 
+  post 'books/add_to_cart/:id', to: 'books#add_to_cart', as: 'add_to_cart'
+  delete 'products/remove_from_cart/:id', to: 'books#remove_from_cart', as: 'remove_from_cart'
+
+
+
+
   resources :books, only: [:index, :show]
   resources :genres
   resources :orders
