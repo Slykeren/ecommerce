@@ -16,13 +16,13 @@ class BooksController < ApplicationController
   end
 
   def add_to_cart
-    id = params[:id].to_i
-    session[:cart] << id unless session[:cart].include?(id)
+    cart_items = {id: params[:id].to_i, quantity: 1}
+    session[:cart] << cart_items unless session[:cart].include?(cart_items[:id])
     redirect_to root_path
   end
 
   def remove_from_cart
-    session[:cart].delete(params[:id].to_i)
+    session[:cart].delete_if { |item| item['id'] == params[:id].to_i }
     redirect_back(fallback_location: root_path)
   end
 
@@ -33,7 +33,12 @@ class BooksController < ApplicationController
   end
 
   def load_cart
-    @cart = Book.find(session[:cart])
+    cart_items = []
+    session[:cart].each do |item|
+      cart_items << item['id']
+    end
+
+    @cart = Book.find(cart_items)
   end
 
 
