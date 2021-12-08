@@ -1,4 +1,4 @@
 class BookGenre < ApplicationRecord
-    has_many :books
-    has_many :genres
+    belongs_to :books
+    belongs_to :genres
 end

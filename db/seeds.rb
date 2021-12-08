@@ -39,6 +39,7 @@ data["items"].each do |row|
         book_id: a.id,
         genre_id: b.id
     )
+    
 end
 puts "Created books"
 puts "created genres"
