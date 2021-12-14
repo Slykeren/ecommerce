@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_24_011833) do
+ActiveRecord::Schema.define(version: 2021_12_08_062758) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 2021_11_24_011833) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "book_orders", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "book_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "book_orders", id: false, force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.integer "order_id", null: false
+    t.index ["book_id", "order_id"], name: "index_book_orders_on_book_id_and_order_id"
+    t.index ["order_id", "book_id"], name: "index_book_orders_on_order_id_and_book_id"
   end
 
   create_table "books", force: :cascade do |t|
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2021_11_24_011833) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
+    t.integer "user_id"
     t.decimal "tax"
     t.decimal "subtotal"
     t.decimal "total"
@@ -87,7 +87,10 @@ ActiveRecord::Schema.define(version: 2021_11_24_011833) do
   end
 
   create_table "taxes", force: :cascade do |t|
-    t.float "amount"
+    t.float "gst"
+    t.float "pst"
+    t.float "hst"
+    t.float "total"
     t.string "province"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -106,4 +109,6 @@ ActiveRecord::Schema.define(version: 2021_11_24_011833) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "book_orders", "books"
+  add_foreign_key "book_orders", "orders"
 end

@@ -19,14 +19,14 @@ class CartsController < ApplicationController
       @cart = Book.find(cart_items)
 
       @order = Order.new
-      @order.customer_id = session[:user_id]
+      @order.user_id = session[:user_id]
 
       @subtotal = 0
       @cart.each_with_index do |item, index|
         @subtotal += item.price * session[:cart][index]['quantity']
       end
       user_province = User.find(session[:user_id]).province
-      user_tax = Tax.find_by(province: user_province).amount
+      user_tax = Tax.find_by(province: user_province).total
       @tax = @subtotal * user_tax
       @total = @subtotal + @tax
       @order.subtotal = @subtotal

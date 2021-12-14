@@ -39,6 +39,7 @@ data["items"].each do |row|
         book_id: a.id,
         genre_id: b.id
     )
+    
 end
 puts "Created books"
 puts "created genres"
@@ -52,11 +53,19 @@ province_selector = province_list_doc.css('.table').css('tbody').css('tr')
 province_selector.each do |province|
 
     province_text = province.css('td')[0].text
-    tax_text = province.css('td')[5].text.to_f / 100
+    gst = province.css('td')[3].text.to_f / 100
+    pst = province.css('td')[2].text.to_f / 100
+    hst = province.css('td')[4].text.to_f / 100
+    total = gst + pst + hst
+   
     
     Tax.create(
         province: province_text,
-        amount: tax_text
+        gst: gst,
+        pst: pst,
+        hst: hst,
+        total: total
+
     )
     puts province_text
 end
