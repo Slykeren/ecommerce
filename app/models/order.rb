@@ -4,6 +4,6 @@ class Order < ApplicationRecord
     has_many :order_items
 
 
-
+    validates :user_id, presence: true
 
 end

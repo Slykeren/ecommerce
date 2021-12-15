@@ -5,4 +5,7 @@ class Book < ApplicationRecord
     has_many :book_orders
     has_many :orders, through: :book_orders
 
+    validates :name, presence: true
+    validates :author, presence: true
+
 end
